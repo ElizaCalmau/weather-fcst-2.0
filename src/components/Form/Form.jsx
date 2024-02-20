@@ -5,7 +5,7 @@ import { useState } from 'react'
 
 export const Form = ({onClick}) => {
     const [inputData, setInputData] = useState({startDate: '', endDate: ''})
-
+    
 
     return <div className='FormWrapper'>
         <form id='tripForm'>
