@@ -1,0 +1,40 @@
+.cityCardWrapper{
+    display: flex;
+    flex-direction: column;
+    border: 1px solid gray;
+    width: 100px;
+    border-radius: 4px;
+}
+
+.cityCardWrapper img {
+    width: 100px;
+}
+
+.cardInfo{
+    text-align: left;
+    display: flex;
+    flex-direction: column;
+    height: 5em;
+    margin: 1em;
+}
+
+.cardInfo{
+    font-size: 11px;
+}
+.cardInfo p {
+    margin: 2px 0;
+}
+.cardInfo span {
+    color: gray
+}
+
+
+.checked{
+    border-color: #535bf2;
+}
+
+.checkboxInput{
+    visibility: hidden;
+    position: absolute;
+    left: -1000px;
+}

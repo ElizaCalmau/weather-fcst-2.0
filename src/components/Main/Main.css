@@ -1,0 +1,47 @@
+ .pageWrapper{
+    display: flex;
+    justify-content: space-around;
+    min-width: 94vw;
+ }
+ 
+ .inputWrapper{
+    position: relative;
+ }
+ 
+ .searchInput{
+    padding: 1.5em 3em;
+    border-radius: 4px;
+    border: none;
+    background-color: #e8e8e8;
+    font-weight: bold;
+}
+
+.searchIcon{
+    position: absolute;
+    top: 27%;
+    left: 4%;
+    pointer-events: none;
+}
+
+::placeholder {
+    color: rgb(77, 77, 77);
+}
+
+.title{
+    font-size: 1.5em;
+    text-align: left;
+}
+
+.cityAndButtonWrapper{
+    display: flex;
+    align-items: center;
+    width: 100%;
+    gap: 1em;
+    padding: 2em 0;
+    
+}
+
+.cityAndButtonWrapper button{
+    width: 9em;
+    height: 9em;
+}
