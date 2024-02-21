@@ -4,7 +4,7 @@ import { X } from 'lucide-react'
 import './Form.css'
 
 export const Form = ({onClick}) => {
-    const [inputData, setInputData] = useState({startDate: '', endDate: ''})
+    const [inputData, setInputData] = useState({city: '', startDate: '', endDate: ''})
     
     
     const handleSubmit = (e) => {
@@ -27,14 +27,41 @@ export const Form = ({onClick}) => {
                 <button onClick={onClick}><X/></button>
             </div>
             <div className='inputElements'>
-                <label>
-                    Start Date
-                    <input type='date' value={inputData.startDate} onChange={(e) => setInputData({...inputData,startDate: e.target.value})}/>
-                </label>
-                <label>
-                    End Date
-                    <input type='date' value={inputData.endDate} onChange={(e) => setInputData({...inputData, endDate: e.target.value})}/>
-                </label>
+                <div className='inputWrapper'>
+                    <label htmlFor="cities">City</label>
+                    <select name="cities" id="cities">
+                        <option value="" disabled selected>Choose city</option>
+                        <option value="New York">New York</option>
+                        <option value="Los Angeles">Los Angeles</option>
+                        <option value="Karkiv">Karkiv</option>
+                        <option value="Lviv">Lviv</option>
+                        <option value="Canberra">Canberra</option>
+                        <option value="Cape Town">Cape Town</option>
+                        <option value="Florence">Florence</option>
+                    </select>
+                </div>
+
+                <div className='inputWrapper'>
+                    <label htmlFor='startDate'>Start Date </label>
+                    <input 
+                    id='startDate'
+                    type='date' 
+                    required 
+                    value={inputData.startDate} 
+                    onChange={(e) => setInputData({...inputData,startDate: e.target.value})}
+                    />
+                </div>
+                <div className='inputWrapper'>
+                    <label htmlFor='endDate'>End Date </label>
+                    <input 
+                    id='endDate'
+                    type='date' 
+                    required 
+                    value={inputData.endDate} 
+                    onChange={(e) => setInputData({...inputData,endDate: e.target.value})}
+                    />
+                </div>
+                
             </div>
             <div>{inputData.startDate}, {inputData.endDate}</div>
             <div className='formButtons'>
