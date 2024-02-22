@@ -1,4 +1,4 @@
-.FormWrapper{
+.formWrapper{
     position: absolute;
     top: 0;
     left: 0;
@@ -28,7 +28,7 @@
 }
 
 
-.FormWrapper form {
+.formWrapper form {
     display: flex;
     flex-direction: column;
     background-color: white;
@@ -46,10 +46,26 @@
     padding: 4em 0;
 }
 
-span {
-    color: red
+.inputWrapper{
+    display: flex;
+    flex-direction: column;
+}
+.inputWrapper input, select {
+    color: gray;
+    padding: 6px;
+    margin: 10px 0;
 }
 
+.inputWrapper select{
+    padding: 8px;
+    
+}
+
+.inputWrapper label span{
+    color: red;
+}
+
+  
 .formButtons {
     display: flex;
     justify-content: end;
@@ -72,12 +88,3 @@ span {
     color: #fff
 }
 
-
-.inputWrapper{
-    display: flex;
-    flex-direction: column;
-    padding: 1em;
-}
-.inputWrapper input, select {
-    padding: 6px;
-}

@@ -20,7 +20,7 @@ export const Form = ({onClick}) => {
 
     }
 
-    return <div className='FormWrapper' >
+    return <div className='formWrapper' >
         <form id='tripForm' onSubmit={handleSubmit}>
             <div className='formLabelWrapper'>
                 <label className='formTitle' htmlFor="tripForm">Create trip</label>
@@ -28,9 +28,9 @@ export const Form = ({onClick}) => {
             </div>
             <div className='inputElements'>
                 <div className='inputWrapper'>
-                    <label htmlFor="cities">City</label>
-                    <select name="cities" id="cities">
-                        <option value="" disabled selected>Choose city</option>
+                    <label htmlFor="cities"><span>*</span>City</label>
+                    <select name="cities" id="cities" defaultValue="Please seelct a city" required onChange={(e) => setInputData({...inputData,city: e.target.value})}>
+                        <option value="Please seelct a city" disabled>Please seelct a city</option>
                         <option value="New York">New York</option>
                         <option value="Los Angeles">Los Angeles</option>
                         <option value="Karkiv">Karkiv</option>
@@ -42,7 +42,7 @@ export const Form = ({onClick}) => {
                 </div>
 
                 <div className='inputWrapper'>
-                    <label htmlFor='startDate'>Start Date </label>
+                    <label htmlFor='startDate'><span>* </span>Start Date </label>
                     <input 
                     id='startDate'
                     type='date' 
@@ -52,7 +52,7 @@ export const Form = ({onClick}) => {
                     />
                 </div>
                 <div className='inputWrapper'>
-                    <label htmlFor='endDate'>End Date </label>
+                    <label htmlFor='endDate'><span>* </span>End Date </label>
                     <input 
                     id='endDate'
                     type='date' 
@@ -63,7 +63,7 @@ export const Form = ({onClick}) => {
                 </div>
                 
             </div>
-            <div>{inputData.startDate}, {inputData.endDate}</div>
+            <div>City: {inputData.city},{inputData.startDate}, {inputData.endDate}</div>
             <div className='formButtons'>
                 <button onClick={onClick}>Cancel</button>
                 <button type='submit'>Save</button>
