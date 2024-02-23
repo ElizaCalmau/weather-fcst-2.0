@@ -3,33 +3,38 @@ import axios from 'axios';
 import { X } from 'lucide-react'
 import './Form.css'
 
-export const Form = ({onClick}) => {
-    const [inputData, setInputData] = useState({city: '', startDate: '', endDate: ''})
+
+export const Form = ({inputData, setInputData, onClick}) => {
     
+    const formattedData = {
+        ...inputData,
+        startDate: new Date(inputData.startDate).getTime(),
+        endDate: new Date(inputData.endDate).getTime()
+      };
     
+
     const handleSubmit = (e) => {
         e.preventDefault();
-
-        axios.post('http://localhost:3000/send', inputData)
+        axios.post('http://localhost:3001/addCity', formattedData)
         .then(function (response) {
             console.log('Response from server:', response.data);
         })
         .catch(function (error) {
         console.error('Error:', error);
         });
-
+        onClick()
     }
-
     return <div className='formWrapper' >
-        <form id='tripForm' onSubmit={handleSubmit}>
+        <p>{inputData && inputData.startDate ? inputData.startDate : ''}</p>
+        <form id='inputDataForm' onSubmit={handleSubmit}>
             <div className='formLabelWrapper'>
-                <label className='formTitle' htmlFor="tripForm">Create trip</label>
+                <label className='formTitle' htmlFor="inputDataForm">Create inputData</label>
                 <button onClick={onClick}><X/></button>
             </div>
             <div className='inputElements'>
                 <div className='inputWrapper'>
                     <label htmlFor="cities"><span>*</span>City</label>
-                    <select name="cities" id="cities" defaultValue="Please seelct a city" required onChange={(e) => setInputData({...inputData,city: e.target.value})}>
+                    <select name="cities" id="cities" defaultValue="Please seelct a city" required onChange={(e) => setInputData({...inputData, city: e.target.value})}>
                         <option value="Please seelct a city" disabled>Please seelct a city</option>
                         <option value="New York">New York</option>
                         <option value="Los Angeles">Los Angeles</option>
@@ -47,8 +52,8 @@ export const Form = ({onClick}) => {
                     id='startDate'
                     type='date' 
                     required 
-                    value={inputData.startDate} 
-                    onChange={(e) => setInputData({...inputData,startDate: e.target.value})}
+
+                    onChange={(e) => setInputData({...inputData, startDate: e.target.value})}
                     />
                 </div>
                 <div className='inputWrapper'>
@@ -57,13 +62,13 @@ export const Form = ({onClick}) => {
                     id='endDate'
                     type='date' 
                     required 
-                    value={inputData.endDate} 
-                    onChange={(e) => setInputData({...inputData,endDate: e.target.value})}
+
+                    onChange={(e) => setInputData({...inputData, endDate: e.target.value})}
                     />
                 </div>
                 
             </div>
-            <div>City: {inputData.city},{inputData.startDate}, {inputData.endDate}</div>
+            <div>City: {inputData.city}, {inputData.startDate} {inputData.endDate}</div>
             <div className='formButtons'>
                 <button onClick={onClick}>Cancel</button>
                 <button type='submit'>Save</button>

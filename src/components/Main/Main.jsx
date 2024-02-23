@@ -5,8 +5,6 @@ import { WeeklyForecast } from '../WeeklyForecast/WeeklyForecast';
 import { useState } from 'react';
 import { CurrentForecast } from '../CurrentForecast/CurrentForecast';
 
-const apiKey = 'RQYD8HNC965NM98N9S8MVTPPC'
-
 export const Main = ({onClick}) => {
     const [city, setCity] = useState('Tokyo');
     const [dayOfWeek, setDayOfWeek] = useState('')
