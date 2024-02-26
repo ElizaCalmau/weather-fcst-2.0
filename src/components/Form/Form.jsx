@@ -26,7 +26,7 @@ export const Form = ({onClick}) => {
         });
         onClick()
     }
-    
+
     return <div className='formWrapper' >
         <p>{inputData && inputData.startDate ? inputData.startDate : ''}</p>
         <form id='inputDataForm' onSubmit={handleSubmit}>
@@ -46,6 +46,9 @@ export const Form = ({onClick}) => {
                         <option value="Canberra">Canberra</option>
                         <option value="Cape Town">Cape Town</option>
                         <option value="Florence">Florence</option>
+                        <option value="Monaco">Monaco</option>
+                        <option value="Venice">Venice</option>
+                        <option value="Lincoln">Lincoln</option>
                     </select>
                 </div>
 
