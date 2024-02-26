@@ -9,8 +9,6 @@ function App() {
   const [formVisibility, setFormVisibility] = useState(false)
   const [cities, setCities] = useState([])
 
-  const [inputData, setInputData] = useState({city: '', startDate: '', endDate: ''})
-
   const handleFormState = () => {
     setFormVisibility(!formVisibility)
   }
@@ -28,7 +26,7 @@ function App() {
     <>
       <div>
         <Main onClick={handleFormState}/>
-      { formVisibility && <Form onClick={handleFormState} inputData={inputData} setInputData={setInputData}/>}
+      { formVisibility && <Form onClick={handleFormState}/>}
       <button onClick={getTrips}>get trip</button>
       <div>
         {cities.map((el) => {

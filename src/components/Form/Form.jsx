@@ -4,8 +4,10 @@ import { X } from 'lucide-react'
 import './Form.css'
 
 
-export const Form = ({inputData, setInputData, onClick}) => {
+export const Form = ({onClick}) => {
     
+    const [inputData, setInputData] = useState({city: '', startDate: '', endDate: ''})
+
     const formattedData = {
         ...inputData,
         startDate: new Date(inputData.startDate).getTime(),
@@ -24,6 +26,7 @@ export const Form = ({inputData, setInputData, onClick}) => {
         });
         onClick()
     }
+    
     return <div className='formWrapper' >
         <p>{inputData && inputData.startDate ? inputData.startDate : ''}</p>
         <form id='inputDataForm' onSubmit={handleSubmit}>
@@ -38,7 +41,7 @@ export const Form = ({inputData, setInputData, onClick}) => {
                         <option value="Please seelct a city" disabled>Please seelct a city</option>
                         <option value="New York">New York</option>
                         <option value="Los Angeles">Los Angeles</option>
-                        <option value="Karkiv">Karkiv</option>
+                        <option value="Kharkiv">Karkiv</option>
                         <option value="Lviv">Lviv</option>
                         <option value="Canberra">Canberra</option>
                         <option value="Cape Town">Cape Town</option>
