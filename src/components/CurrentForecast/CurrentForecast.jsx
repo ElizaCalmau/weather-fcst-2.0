@@ -10,6 +10,8 @@ export const CurrentForecast = ({trip}) => {
     const day = currentDate.getDay()
     const weekDay = getDayOfWeek(day)
 
+    
+
     // useEffect(() => {
     //     fetch(`https://weather.visualcrossing.com/VisualCrossingWebServices/rest/services/timeline/london?unitGroup=metric&key=RQYD8HNC965NM98N9S8MVTPPC&contentType=json`)
     //         .then(response => response.json())
