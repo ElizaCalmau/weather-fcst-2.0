@@ -1,10 +1,13 @@
 .currentForecastWrapper{
     background-image: url('/current_fc_bg.jpg');
     background-repeat: no-repeat;
-    background-size: contain;
-    width: 400px;
+    background-size: cover;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    width: 45%;
     color: #fff;
-
 }
 
 .tempWrapper{

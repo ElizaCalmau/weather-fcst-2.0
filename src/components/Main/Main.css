@@ -1,9 +1,14 @@
  .pageWrapper{
     display: flex;
+    gap: 3em;
     justify-content: space-around;
     min-width: 94vw;
  }
  
+ main {
+    width: 60%;
+ }
+
  .inputWrapper{
     position: relative;
  }
@@ -34,15 +39,14 @@
 
 .cityAndButtonWrapper{
     display: flex;
-    flex-wrap: wrap;
     align-items: center;
-    width: 100%;
+    overflow-x: scroll;
     gap: 1em;
     padding: 2em 0;
     
 }
 
 .cityAndButtonWrapper button{
-    width: 9em;
-    height: 9em;
+    padding: 70px;
+    height: 11.5em;
 }

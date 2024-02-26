@@ -28,12 +28,10 @@ export const CurrentForecast = ({trip}) => {
     return (
             
         <div className='currentForecastWrapper'>
-            <p>city: {trip.city}</p>
             <p>{weekDay}</p>
             <div className='tempWrapper'>
-            <img src={forecastIcons[info.icon]} alt='weather icon' />
-            <p>{info.temp}</p>
-
+                <img src={forecastIcons[info.icon]} alt='weather icon' />
+                <p>{info.temp}</p>
             </div>
             <p>{trip.city}</p>
         </div>
