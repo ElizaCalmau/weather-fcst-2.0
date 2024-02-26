@@ -6,8 +6,7 @@ import { useState } from 'react';
 import { CurrentForecast } from '../CurrentForecast/CurrentForecast';
 
 export const Main = ({onClick}) => {
-    const [city, setCity] = useState('Tokyo');
-    const [dayOfWeek, setDayOfWeek] = useState('')
+    const [trip, setTrip] = useState({city: 'Lviv', start: '', end: ''})//global props which retrieves data in citycard and pass it to weekly and daily forecast
     const handleInput = (e) => {
         setCity(e.target.value)
     }
@@ -21,12 +20,12 @@ export const Main = ({onClick}) => {
                     <div className='searchIcon'><Search/></div>
                 </div>
                 <div className='cityAndButtonWrapper'>
-                    <CityCard city={city} setDayOfWeek={setDayOfWeek}/>
+                    <CityCard trip={trip} setTrip={setTrip}/>
                     <button onClick={onClick}>Add trip</button>
                 </div>
-                <WeeklyForecast city={city} day={dayOfWeek}/>
+                <WeeklyForecast trip={trip}/>
                 </main>
-            <CurrentForecast city={city}/>
+            <CurrentForecast trip={trip}/>
         </div>
     )
 }

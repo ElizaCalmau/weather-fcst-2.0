@@ -6,14 +6,16 @@ import { set } from "mongoose";
 
 const accessKey = "t7hhZ5uulANaG1kjtrYjldaQyenQzp6RmunyhjqRz5w";
 
-export const CityCard = () => {
+export const CityCard = ({trip, setTrip}) => {
+    
   const [imageUrl, setImageUrl] = useState([]);
   const [dbCities, setDbCities] = useState([]);
-  const [checkedItemId, setCheckedItemId] = useState(null);
+  const [checkedItem, setCheckedItem] = useState('Lviv');
 
-  const handleChecked = (id) => {
-    setCheckedItemId(id);
-    console.log(id)
+  const handleChecked = (city) => {
+    setCheckedItem(city.city);
+    setTrip({city: city.city, start: city.startDate, end: city.endDate})
+    console.log(city)
 };
 
 
@@ -96,8 +98,8 @@ export const CityCard = () => {
             <>
               <div
                     key={el._id}
-                    onClick={() => handleChecked(el._id)}
-                    className={`cityCardWrapper ${checkedItemId === el._id ? "checked" : ""}`}
+                    onClick={() => handleChecked(el)}
+                    className={`cityCardWrapper ${checkedItem === el.city ? "checked" : ""}`}
                 >
                 <label>
                   <img src={currentUrl ? currentUrl.url : ""} alt="city photo"/>

@@ -4,7 +4,7 @@ import { forecastIcons } from "../../utils/weatherStates";
 import './CurrentForecast.css'
 
 
-export const CurrentForecast = ({city}) => {
+export const CurrentForecast = ({trip}) => {
     const [info, setInfo] = useState({temp: '', seconds: '', icon: ''})
     const currentDate = new Date();
     const day = currentDate.getDay()
@@ -26,13 +26,14 @@ export const CurrentForecast = ({city}) => {
     return (
             
         <div className='currentForecastWrapper'>
+            <p>city: {trip.city}</p>
             <p>{weekDay}</p>
             <div className='tempWrapper'>
             <img src={forecastIcons[info.icon]} alt='weather icon' />
             <p>{info.temp}</p>
 
             </div>
-            <p>{city}</p>
+            <p>{trip.city}</p>
         </div>
     )
     }
