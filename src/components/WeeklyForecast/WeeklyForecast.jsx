@@ -11,7 +11,7 @@ export const WeeklyForecast = ({trip}) => {
     const yymmddStart = `${start.getFullYear()}-${String(start.getMonth() + 1).padStart(2,"0")}-${String(start.getDate()).padStart(2,"0")}`
     const yymmddEnd = `${end.getFullYear()}-${String(end.getMonth() + 1).padStart(2,"0")}-${String(end.getDate()).padStart(2,"0")}`
     console.log(yymmddStart, yymmddEnd)
-    console.log(trip)   
+
     // useEffect(() => {
     //     const fetchData = async () => {
     //         try {

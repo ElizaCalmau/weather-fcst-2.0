@@ -25,8 +25,6 @@ export const Main = ({onClick}) => {
           });
       }, []);
 
-      console.log('trip obj from main', trip)
-
     return (
         <div className='pageWrapper'>
             <main>

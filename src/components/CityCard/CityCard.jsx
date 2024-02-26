@@ -10,7 +10,7 @@ export const CityCard = ({trip, setTrip}) => {
     
   const [imageUrl, setImageUrl] = useState([]);
   const [dbCities, setDbCities] = useState([]);
-  const [checkedItem, setCheckedItem] = useState('Lviv');
+  const [checkedItem, setCheckedItem] = useState('');
 
   const handleChecked = (city) => {
     setCheckedItem(city.city);

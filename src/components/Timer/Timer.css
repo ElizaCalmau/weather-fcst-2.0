@@ -1,0 +1,17 @@
+.countdownWrapper{
+    display: flex;
+    width: 100%;
+    justify-content: space-evenly;
+}
+
+.dateItem{
+    display: flex;
+    flex-direction: column;
+    font-weight: 800;
+    font-size: 1em;
+}
+
+.dateItem span {
+    font-weight: 400;
+    font-size: 10px;
+}
