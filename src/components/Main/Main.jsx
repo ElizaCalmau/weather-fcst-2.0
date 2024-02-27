@@ -8,17 +8,22 @@ import axios from 'axios';
 
 export const Main = ({onClick, isSubmitted}) => {
     const [trip, setTrip] = useState({city: '', start: '', end: ''})//global props which retrieves data in citycard and pass it to weekly and daily forecast
+    const [dbCities, setDbCities] = useState([])
     const handleInput = (e) => {
-        setCity(e.target.value)
-    }
+        const inputValue = e.target.value;
+        const foundCity = dbCities.find(el => el.city.toLowerCase() === inputValue.toLowerCase());
+        if (foundCity) {
+            setTrip({ city: foundCity.city, start: foundCity.startDate, end: foundCity.endDate });
+        } 
+    };
 
     useEffect(() => {
         // get cities from DB
         axios
           .get("http://localhost:3001/getCities")
           .then((resp) => {
-            console.log(resp.data);
             setTrip({city: resp.data[0].city, start: resp.data[0].startDate, end: resp.data[0].endDate,});
+            setDbCities(resp.data)
           })
           .catch((err) => {
             console.error(err);

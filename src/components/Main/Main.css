@@ -13,6 +13,18 @@
     position: relative;
  }
  
+ .inputWrapper input{
+    padding: 15px;
+    width: 11em;
+    text-align: center;
+    color: black;
+ }
+
+.inputWrapper input:focus-visible{
+    border: 1px solid #535bf2;
+    outline: none;
+}
+
  .searchInput{
     padding: 1.5em 3em;
     border-radius: 4px;
@@ -21,10 +33,11 @@
     font-weight: bold;
 }
 
+
 .searchIcon{
     position: absolute;
     top: 27%;
-    left: 4%;
+    left: 2%;
     pointer-events: none;
 }
 
@@ -47,6 +60,6 @@
 }
 
 .cityAndButtonWrapper button{
-    padding: 70px;
+    width: 150px;
     height: 11.5em;
 }

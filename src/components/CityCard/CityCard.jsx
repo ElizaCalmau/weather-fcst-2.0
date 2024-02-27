@@ -1,18 +1,15 @@
 import { useEffect, useState } from "react";
-import { getDayOfWeek } from "../../utils/getDayOfWeek";
 import "./CityCard.css";
 import axios from "axios";
-import { set } from "mongoose";
 import { formateDate } from "../../utils/formateDate";
 
 const accessKey = "t7hhZ5uulANaG1kjtrYjldaQyenQzp6RmunyhjqRz5w";
 
-export const CityCard = ({setTrip, isSubmitted}) => {
+export const CityCard = ({found, setTrip, isSubmitted}) => {
     
   const [imageUrl, setImageUrl] = useState([]);
   const [dbCities, setDbCities] = useState([]);
   const [checkedItem, setCheckedItem] = useState('');
-
   const handleChecked = (city) => {
     setCheckedItem(city.city);
     setTrip({city: city.city, start: city.startDate, end: city.endDate})
@@ -34,21 +31,18 @@ export const CityCard = ({setTrip, isSubmitted}) => {
     }
   };
 
-
-
   useEffect(() => {
     // get cities from DB
     axios
       .get("http://localhost:3001/getCities")
       .then((resp) => {
-        console.log(resp.data);
         setDbCities(resp.data);
       })
       .catch((err) => {
         console.error(err);
       });
   }, [isSubmitted]);
-console.log(isSubmitted)
+
   useEffect(() => {
     //get img urls
     if (dbCities) {

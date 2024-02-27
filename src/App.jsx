@@ -15,8 +15,6 @@ function App() {
   const handleFormState = () => {
     setFormVisibility(!formVisibility)
   }
-  
-  console.log(isSubmitted)
 
   return (
     <>
