@@ -13,7 +13,6 @@ export const Main = ({onClick, isSubmitted}) => {
     const handleInput = (e) => {
         const inputValue = e.target.value;
         const foundCity = dbCities.find(el => el.city.toLowerCase() === inputValue.toLowerCase());
-
         if (foundCity) {
             setTrip({ city: foundCity.city, start: foundCity.startDate, end: foundCity.endDate });
             setCheckedItem(foundCity.city)
@@ -40,7 +39,7 @@ export const Main = ({onClick, isSubmitted}) => {
                 <p className='title'>Weather <b>Forecast</b></p>
                 <div className='inputWrapper'>
                     <input className='searchInput' placeholder='Search your trip' onChange={(e) => handleInput(e)}/>
-                    <div className='searchIcon'><Search/></div>
+                    <div className='searchIcon'><Search className='search'/></div>
                 </div>
                 <div className='cityAndButtonWrapper'>
                     <CityCard setTrip={setTrip} isSubmitted={isSubmitted} checkedItem={checkedItem} setCheckedItem={setCheckedItem}/>

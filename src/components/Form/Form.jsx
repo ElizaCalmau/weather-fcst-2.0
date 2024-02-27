@@ -36,7 +36,7 @@ export const Form = ({onClick, handleSubmission}) => {
                 <button onClick={onClick}><X/></button>
             </div>
             <div className='inputElements'>
-                <div className='inputWrapper'>
+                <div className='formInputWrapper'>
                     <label htmlFor="cities"><span>*</span>City</label>
                     <select name="cities" id="cities" defaultValue="Please seelct a city" required onChange={(e) => setInputData({...inputData, city: e.target.value})}>
                         <option value="Please seelct a city" disabled>Please seelct a city</option>
@@ -53,7 +53,7 @@ export const Form = ({onClick, handleSubmission}) => {
                     </select>
                 </div>
 
-                <div className='inputWrapper'>
+                <div className='formInputWrapper'>
                     <label htmlFor='startDate'><span>* </span>Start Date </label>
                     <input 
                     id='startDate'
@@ -63,7 +63,7 @@ export const Form = ({onClick, handleSubmission}) => {
                     onChange={(e) => setInputData({...inputData, startDate: e.target.value})}
                     />
                 </div>
-                <div className='inputWrapper'>
+                <div className='formInputWrapper'>
                     <label htmlFor='endDate'><span>* </span>End Date </label>
                     <input 
                     id='endDate'
@@ -75,7 +75,6 @@ export const Form = ({onClick, handleSubmission}) => {
                 </div>
                 
             </div>
-            <div>City: {inputData.city}, {inputData.startDate} {inputData.endDate}</div>
             <div className='formButtons'>
                 <button onClick={onClick}>Cancel</button>
                 <button type='submit'>Save</button>

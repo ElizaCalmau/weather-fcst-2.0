@@ -46,22 +46,22 @@
     padding: 4em 0;
 }
 
-.inputWrapper{
+.formInputWrapper{
     display: flex;
     flex-direction: column;
 }
-.inputWrapper input, select {
+.formInputWrapper input, select {
     color: gray;
     padding: 6px;
     margin: 10px 0;
 }
 
-.inputWrapper select{
+.formInputWrapper select{
     padding: 8px;
     
 }
 
-.inputWrapper label span{
+.formInputWrapperlabel span{
     color: red;
 }
 
