@@ -6,7 +6,7 @@ import { useState, useEffect } from 'react';
 import { CurrentForecast } from '../CurrentForecast/CurrentForecast';
 import axios from 'axios';
 
-export const Main = ({onClick}) => {
+export const Main = ({onClick, isSubmitted}) => {
     const [trip, setTrip] = useState({city: '', start: '', end: ''})//global props which retrieves data in citycard and pass it to weekly and daily forecast
     const handleInput = (e) => {
         setCity(e.target.value)
@@ -34,7 +34,7 @@ export const Main = ({onClick}) => {
                     <div className='searchIcon'><Search/></div>
                 </div>
                 <div className='cityAndButtonWrapper'>
-                    <CityCard trip={trip} setTrip={setTrip}/>
+                    <CityCard setTrip={setTrip} isSubmitted={isSubmitted}/>
                     <button onClick={onClick}>Add trip</button>
                 </div>
                 <WeeklyForecast trip={trip}/>

@@ -7,7 +7,7 @@ import { formateDate } from "../../utils/formateDate";
 
 const accessKey = "t7hhZ5uulANaG1kjtrYjldaQyenQzp6RmunyhjqRz5w";
 
-export const CityCard = ({trip, setTrip}) => {
+export const CityCard = ({setTrip, isSubmitted}) => {
     
   const [imageUrl, setImageUrl] = useState([]);
   const [dbCities, setDbCities] = useState([]);
@@ -47,8 +47,8 @@ export const CityCard = ({trip, setTrip}) => {
       .catch((err) => {
         console.error(err);
       });
-  }, []);
-
+  }, [isSubmitted]);
+console.log(isSubmitted)
   useEffect(() => {
     //get img urls
     if (dbCities) {

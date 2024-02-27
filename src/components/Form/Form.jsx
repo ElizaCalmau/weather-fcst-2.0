@@ -4,7 +4,7 @@ import { X } from 'lucide-react'
 import './Form.css'
 
 
-export const Form = ({onClick}) => {
+export const Form = ({onClick, handleSubmission}) => {
     
     const [inputData, setInputData] = useState({city: '', startDate: '', endDate: ''})
 
@@ -25,6 +25,7 @@ export const Form = ({onClick}) => {
         console.error('Error:', error);
         });
         onClick()
+        handleSubmission()
     }
 
     return <div className='formWrapper' >
