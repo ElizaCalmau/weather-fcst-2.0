@@ -9,11 +9,14 @@ import axios from 'axios';
 export const Main = ({onClick, isSubmitted}) => {
     const [trip, setTrip] = useState({city: '', start: '', end: ''})//global props which retrieves data in citycard and pass it to weekly and daily forecast
     const [dbCities, setDbCities] = useState([])
+    const [checkedItem, setCheckedItem] = useState('');
     const handleInput = (e) => {
         const inputValue = e.target.value;
         const foundCity = dbCities.find(el => el.city.toLowerCase() === inputValue.toLowerCase());
+
         if (foundCity) {
             setTrip({ city: foundCity.city, start: foundCity.startDate, end: foundCity.endDate });
+            setCheckedItem(foundCity.city)
         } 
     };
 
@@ -24,6 +27,7 @@ export const Main = ({onClick, isSubmitted}) => {
           .then((resp) => {
             setTrip({city: resp.data[0].city, start: resp.data[0].startDate, end: resp.data[0].endDate,});
             setDbCities(resp.data)
+            setCheckedItem(resp.data[0].city)
           })
           .catch((err) => {
             console.error(err);
@@ -39,7 +43,7 @@ export const Main = ({onClick, isSubmitted}) => {
                     <div className='searchIcon'><Search/></div>
                 </div>
                 <div className='cityAndButtonWrapper'>
-                    <CityCard setTrip={setTrip} isSubmitted={isSubmitted}/>
+                    <CityCard setTrip={setTrip} isSubmitted={isSubmitted} checkedItem={checkedItem} setCheckedItem={setCheckedItem}/>
                     <button onClick={onClick}>Add trip</button>
                 </div>
                 <WeeklyForecast trip={trip}/>

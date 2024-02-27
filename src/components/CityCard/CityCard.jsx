@@ -5,11 +5,11 @@ import { formateDate } from "../../utils/formateDate";
 
 const accessKey = "t7hhZ5uulANaG1kjtrYjldaQyenQzp6RmunyhjqRz5w";
 
-export const CityCard = ({found, setTrip, isSubmitted}) => {
+export const CityCard = ({checkedItem, setCheckedItem, setTrip, isSubmitted}) => {
     
   const [imageUrl, setImageUrl] = useState([]);
   const [dbCities, setDbCities] = useState([]);
-  const [checkedItem, setCheckedItem] = useState('');
+  // const [checkedItem, setCheckedItem] = useState('');
   const handleChecked = (city) => {
     setCheckedItem(city.city);
     setTrip({city: city.city, start: city.startDate, end: city.endDate})
