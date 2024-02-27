@@ -3,6 +3,7 @@ import { getDayOfWeek } from "../../utils/getDayOfWeek";
 import "./CityCard.css";
 import axios from "axios";
 import { set } from "mongoose";
+import { formateDate } from "../../utils/formateDate";
 
 const accessKey = "t7hhZ5uulANaG1kjtrYjldaQyenQzp6RmunyhjqRz5w";
 
@@ -15,9 +16,7 @@ export const CityCard = ({trip, setTrip}) => {
   const handleChecked = (city) => {
     setCheckedItem(city.city);
     setTrip({city: city.city, start: city.startDate, end: city.endDate})
-    console.log(city)
 };
-
 
   const fetchUrl = async (el) => {
     try {
@@ -35,25 +34,7 @@ export const CityCard = ({trip, setTrip}) => {
     }
   };
 
-  const convertDate = (el) => {
-    const startDate = new Date(el.startDate);
-    const endDate = new Date(el.endDate);
-    const formattedStart = `${String(startDate.getDate()).padStart(
-      2,
-      "0"
-    )}.${String(startDate.getMonth() + 1).padStart(
-      2,
-      "0"
-    )}.${startDate.getFullYear()}`;
-    const formattedEnd = `${String(endDate.getDate()).padStart(
-      2,
-      "0"
-    )}.${String(endDate.getMonth() + 1).padStart(
-      2,
-      "0"
-    )}.${endDate.getFullYear()}`;
-    return { formattedStart, formattedEnd };
-  };
+
 
   useEffect(() => {
     // get cities from DB
@@ -92,8 +73,9 @@ export const CityCard = ({trip, setTrip}) => {
       {dbCities &&
         dbCities.map((el) => {
           const currentUrl = imageUrl.find((url) => url.city === el.city);
-          const start = convertDate(el).formattedStart;
-          const end = convertDate(el).formattedEnd;
+          const start = formateDate(el.startDate)
+          const end = formateDate(el.endDate)
+
           return (
             <>
               <div
