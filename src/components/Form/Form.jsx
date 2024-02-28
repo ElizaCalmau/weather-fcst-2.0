@@ -38,14 +38,14 @@ export const Form = () => {
                     <label htmlFor="cities">City</label>
                     <select name="cities" id="cities" defaultValue="Please seelct a city" required onChange={(e) => setInputData({...inputData, city: e.target.value})}>
                         <option value="Please select a city" disabled>Please seelct a city</option>
-                        <option value="New York">New York</option>
-                        <option value="Los Angeles">Los Angeles</option>
+                        <option value="Chicago">Chicago</option>
+                        <option value="Fresno">Fresno</option>
                         <option value="Kharkiv">Karkiv</option>
                         <option value="Lviv">Lviv</option>
                         <option value="Canberra">Canberra</option>
-                        <option value="Cape Town">Cape Town</option>
+                        <option value="Memphis">Memphis</option>
                         <option value="Florence">Florence</option>
-                        <option value="Monaco">Monaco</option>
+                        <option value="Berlin">Berlin</option>
                         <option value="Venice">Venice</option>
                         <option value="Lincoln">Lincoln</option>
                     </select>
