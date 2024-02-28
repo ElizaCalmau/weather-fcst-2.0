@@ -1,18 +1,25 @@
-import { useState, useEffect } from 'react';
 import axios from 'axios';
 import { Search } from 'lucide-react';
+import { useState, useEffect, createContext, useContext } from 'react';
+import { FormContext } from '../../App';
 import { CityCard } from '../CityCard/CityCard';
 import { WeeklyForecast } from '../WeeklyForecast/WeeklyForecast';
 import { CurrentForecast } from '../CurrentForecast/CurrentForecast';
 import './Main.css'
-import { useContext } from 'react';
-import { FormContext } from '../../App';
+
+export const TripContext = createContext()
 
 export const Main = () => {
+
     const { handleFormVisibility } = useContext(FormContext)
-    const [trip, setTrip] = useState({city: '', start: '', end: ''})//global props which retrieves data in citycard and pass it to weekly and daily forecast
+    const [trip, setTrip] = useState({city: '', start: '', end: ''})
     const [dbCities, setDbCities] = useState([])
     const [checkedItem, setCheckedItem] = useState('');
+    
+    const TripContextValue = { trip, setTrip, dbCities, setDbCities, checkedItem, setCheckedItem }
+
+    const { isSubmitted } = useContext(FormContext)
+
     const handleInput = (e) => {
         const inputValue = e.target.value;
         const foundCity = dbCities.find(el => el.city.toLowerCase() === inputValue.toLowerCase());
@@ -34,23 +41,26 @@ export const Main = () => {
           .catch((err) => {
             console.error(err);
           });
-      }, []);
+      }, [isSubmitted]);
 
     return (
-        <div className='pageWrapper'>
-            <main>
-                <p className='title'>Weather <b>Forecast</b></p>
-                <div className='inputWrapper'>
-                    <input className='searchInput' placeholder='Search your trip' onChange={(e) => handleInput(e)}/>
-                    <div className='searchIcon'><Search className='search'/></div>
-                </div>
-                <div className='cityAndButtonWrapper'>
-                    <CityCard setTrip={setTrip} checkedItem={checkedItem} setCheckedItem={setCheckedItem}/>
-                    <button onClick={handleFormVisibility}>Add trip</button>
-                </div>
-                <WeeklyForecast trip={trip}/>
+        <TripContext.Provider value={TripContextValue}>
+            <div className='pageWrapper'>
+                <main>
+                    <p className='title'>Weather <b>Forecast</b></p>
+                    <div className='inputWrapper'>
+                        <input className='searchInput' placeholder='Search your trip' onChange={(e) => handleInput(e)}/>
+                        <div className='searchIcon'><Search className='search'/></div>
+                    </div>
+                    <div className='cityAndButtonWrapper'>
+                        <CityCard/>
+                        <button onClick={handleFormVisibility}>Add trip</button>
+                    </div>
+                    <WeeklyForecast/>
                 </main>
-            <CurrentForecast trip={trip}/>
-        </div>
+                <CurrentForecast/>
+            </div>
+        </TripContext.Provider>
+        
     )
 }

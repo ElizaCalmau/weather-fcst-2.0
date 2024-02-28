@@ -1,25 +1,27 @@
-import { useEffect, useState } from "react"
 import axios from "axios"
+import { useContext, useEffect, useState } from "react"
+import { TripContext } from "../Main/Main"
 import { formatDateFetch } from "../../utils/formatDateFetch"
 import { getDayOfWeek } from "../../utils/getDayOfWeek"
 import { forecastIcons } from "../../utils/weatherStates"
 import './WeeklyForecast.css'
 
-export const WeeklyForecast = ({trip}) => {
+export const WeeklyForecast = () => {
+    const { trip } = useContext(TripContext)
     const [days, setDays] = useState([]);
     const start = formatDateFetch(trip.start)
     const end = formatDateFetch(trip.end)
 
-//    useEffect(()=> {
-//     axios.get(`https://weather.visualcrossing.com/VisualCrossingWebServices/rest/services/timeline/${trip.city}/${start}/${end}?unitGroup=metric&key=QBJXJYDPNENDR6J6F4LPY8ARQ&contentType=json`)
-//             .then(response => {
-//                 const data = response.data;
-//                 setDays(data.days);
-//             })
-//             .catch(error => {
-//                 console.error('Error:', error);
-//             });
-//     }, [trip, start, end])
+   useEffect(()=> {
+    axios.get(`https://weather.visualcrossing.com/VisualCrossingWebServices/rest/services/timeline/${trip.city}/${start}/${end}?unitGroup=metric&key=QBJXJYDPNENDR6J6F4LPY8ARQ&contentType=json`)
+            .then(response => {
+                const data = response.data;
+                setDays(data.days);
+            })
+            .catch(error => {
+                console.error('Error:', error);
+            });
+    }, [trip, start, end])
    
     return(
         <>

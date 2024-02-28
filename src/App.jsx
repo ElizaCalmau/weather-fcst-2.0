@@ -6,9 +6,7 @@ import './App.css'
 
 export const FormContext = createContext()
 
-
 function App() {
-
   const [formVisibility, setFormVisibility] = useState(false)
   const [isSubmitted, setIsSubmitted] = useState(false);
 
@@ -19,6 +17,7 @@ function App() {
   const handleFormVisibility = () => {
     setFormVisibility(!formVisibility)
   }
+
   const FormContextValue = {
     isSubmitted,
     handleSubmission,
@@ -33,4 +32,4 @@ function App() {
   )
 }
 
-export default App
+export default App;
