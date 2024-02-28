@@ -1,10 +1,10 @@
+import { useState, useEffect } from 'react';
+import axios from 'axios';
 import { Search } from 'lucide-react';
-import './Main.css'
 import { CityCard } from '../CityCard/CityCard';
 import { WeeklyForecast } from '../WeeklyForecast/WeeklyForecast';
-import { useState, useEffect } from 'react';
 import { CurrentForecast } from '../CurrentForecast/CurrentForecast';
-import axios from 'axios';
+import './Main.css'
 
 export const Main = ({onClick, isSubmitted}) => {
     const [trip, setTrip] = useState({city: '', start: '', end: ''})//global props which retrieves data in citycard and pass it to weekly and daily forecast
@@ -24,7 +24,7 @@ export const Main = ({onClick, isSubmitted}) => {
         axios
           .get("http://localhost:3001/getCities")
           .then((resp) => {
-            setTrip({city: resp.data[0].city, start: resp.data[0].startDate, end: resp.data[0].endDate,});
+            setTrip({city: resp.data[0].city, start: resp.data[0].startDate, end: resp.data[0].endDate});
             setDbCities(resp.data)
             setCheckedItem(resp.data[0].city)
           })

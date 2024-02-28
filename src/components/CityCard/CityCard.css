@@ -29,13 +29,6 @@
     color: gray
 }
 
-
 .checked{
     border-color: #535bf2;
-}
-
-.checkboxInput{
-    visibility: hidden;
-    position: absolute;
-    left: -1000px;
 }

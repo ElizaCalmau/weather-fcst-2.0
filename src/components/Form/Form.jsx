@@ -13,8 +13,7 @@ export const Form = ({onClick, handleSubmission}) => {
         startDate: new Date(inputData.startDate).getTime(),
         endDate: new Date(inputData.endDate).getTime()
       };
-    
-
+   
     const handleSubmit = (e) => {
         e.preventDefault();
         axios.post('http://localhost:3001/addCity', formattedData)
@@ -28,18 +27,17 @@ export const Form = ({onClick, handleSubmission}) => {
         handleSubmission()
     }
 
-    return <div className='formWrapper' >
-        <p>{inputData && inputData.startDate ? inputData.startDate : ''}</p>
+    return <div className='formWrapper'>
         <form id='inputDataForm' onSubmit={handleSubmit}>
             <div className='formLabelWrapper'>
-                <label className='formTitle' htmlFor="inputDataForm">Create inputData</label>
+                <label className='formTitle' htmlFor="inputDataForm">Create trip</label>
                 <button onClick={onClick}><X/></button>
             </div>
             <div className='inputElements'>
                 <div className='formInputWrapper'>
-                    <label htmlFor="cities"><span>*</span>City</label>
+                    <label htmlFor="cities">City</label>
                     <select name="cities" id="cities" defaultValue="Please seelct a city" required onChange={(e) => setInputData({...inputData, city: e.target.value})}>
-                        <option value="Please seelct a city" disabled>Please seelct a city</option>
+                        <option value="Please select a city" disabled>Please seelct a city</option>
                         <option value="New York">New York</option>
                         <option value="Los Angeles">Los Angeles</option>
                         <option value="Kharkiv">Karkiv</option>
@@ -54,26 +52,13 @@ export const Form = ({onClick, handleSubmission}) => {
                 </div>
 
                 <div className='formInputWrapper'>
-                    <label htmlFor='startDate'><span>* </span>Start Date </label>
-                    <input 
-                    id='startDate'
-                    type='date' 
-                    required 
-
-                    onChange={(e) => setInputData({...inputData, startDate: e.target.value})}
-                    />
+                    <label htmlFor='startDate'>Start Date </label>
+                    <input id='startDate' type='date' onChange={(e) => setInputData({...inputData, startDate: e.target.value})}/>
                 </div>
                 <div className='formInputWrapper'>
-                    <label htmlFor='endDate'><span>* </span>End Date </label>
-                    <input 
-                    id='endDate'
-                    type='date' 
-                    required 
-
-                    onChange={(e) => setInputData({...inputData, endDate: e.target.value})}
-                    />
+                    <label htmlFor='endDate'>End Date </label>
+                    <input id='endDate' type='date' onChange={(e) => setInputData({...inputData, endDate: e.target.value})}/>
                 </div>
-                
             </div>
             <div className='formButtons'>
                 <button onClick={onClick}>Cancel</button>

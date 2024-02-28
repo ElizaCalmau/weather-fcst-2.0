@@ -1,19 +1,22 @@
 import { useEffect, useState } from "react";
-import "./CityCard.css";
 import axios from "axios";
-import { formateDate } from "../../utils/formateDate";
+import { formatDate } from "../../utils/formatDate";
+import "./CityCard.css";
 
 const accessKey = "t7hhZ5uulANaG1kjtrYjldaQyenQzp6RmunyhjqRz5w";
 
-export const CityCard = ({checkedItem, setCheckedItem, setTrip, isSubmitted}) => {
-    
+export const CityCard = ({
+  checkedItem,
+  setCheckedItem,
+  setTrip,
+  isSubmitted,
+}) => {
   const [imageUrl, setImageUrl] = useState([]);
   const [dbCities, setDbCities] = useState([]);
-  // const [checkedItem, setCheckedItem] = useState('');
   const handleChecked = (city) => {
     setCheckedItem(city.city);
-    setTrip({city: city.city, start: city.startDate, end: city.endDate})
-};
+    setTrip({ city: city.city, start: city.startDate, end: city.endDate });
+  };
 
   const fetchUrl = async (el) => {
     try {
@@ -48,8 +51,6 @@ export const CityCard = ({checkedItem, setCheckedItem, setTrip, isSubmitted}) =>
     if (dbCities) {
       Promise.all(dbCities.map((el) => fetchUrl(el)))
         .then((urls) => {
-          //[promise, promise, promise]
-          // Create an array of objects where each object contains city and its URL
           const cityUrls = dbCities.map((el, index) => ({
             city: el.city,
             url: urls[index],
@@ -67,25 +68,25 @@ export const CityCard = ({checkedItem, setCheckedItem, setTrip, isSubmitted}) =>
       {dbCities &&
         dbCities.map((el) => {
           const currentUrl = imageUrl.find((url) => url.city === el.city);
-          const start = formateDate(el.startDate)
-          const end = formateDate(el.endDate)
+          const start = formatDate(el.startDate);
+          const end = formatDate(el.endDate);
 
           return (
             <>
               <div
-                    key={el._id}
-                    onClick={() => handleChecked(el)}
-                    className={`cityCardWrapper ${checkedItem === el.city ? "checked" : ""}`}
-                >
-                <label>
-                  <img src={currentUrl ? currentUrl.url : ""} alt="city photo"/>
-                  <div className="cardInfo">
-                    <p>{el.city}</p>
-                    <p>{start}</p>
-                    <p>{end}</p>
-                  </div>
-                </label>
-              </div>{" "}
+                key={el._id}
+                onClick={() => handleChecked(el)}
+                className={`cityCardWrapper ${
+                  checkedItem === el.city ? "checked" : ""
+                }`}
+              >
+                <img src={currentUrl ? currentUrl.url : ""} alt="city photo" />
+                <div className="cardInfo">
+                  <p>{el.city}</p>
+                  <p>{start}</p>
+                  <p>{end}</p>
+                </div>
+              </div>
             </>
           );
         })}

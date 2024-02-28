@@ -27,7 +27,6 @@
     outline: none;
 }
 
-
 .formWrapper form {
     display: flex;
     flex-direction: column;
@@ -61,10 +60,10 @@
     
 }
 
-.formInputWrapper label span{
+.formInputWrapper label::before{
+    content: "*";
     color: red;
 }
-
   
 .formButtons {
     display: flex;

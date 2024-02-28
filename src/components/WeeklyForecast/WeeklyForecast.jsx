@@ -1,9 +1,9 @@
 import { useEffect, useState } from "react"
+import axios from "axios"
+import { formatDateFetch } from "../../utils/formatDateFetch"
 import { getDayOfWeek } from "../../utils/getDayOfWeek"
 import { forecastIcons } from "../../utils/weatherStates"
 import './WeeklyForecast.css'
-import axios from "axios"
-import { formatDateFetch } from "../../utils/formatDateFetch"
 
 export const WeeklyForecast = ({trip}) => {
     const [days, setDays] = useState([]);

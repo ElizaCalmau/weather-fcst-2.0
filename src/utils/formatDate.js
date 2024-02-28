@@ -1,4 +1,4 @@
-export const formateDate = (d) => {
+export const formatDate = (d) => {
     const date = new Date(d)
     const formattedDate = `${String(date.getDate()).padStart(
         2,
