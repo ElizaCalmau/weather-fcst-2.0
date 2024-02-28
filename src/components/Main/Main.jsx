@@ -5,8 +5,11 @@ import { CityCard } from '../CityCard/CityCard';
 import { WeeklyForecast } from '../WeeklyForecast/WeeklyForecast';
 import { CurrentForecast } from '../CurrentForecast/CurrentForecast';
 import './Main.css'
+import { useContext } from 'react';
+import { FormContext } from '../../App';
 
-export const Main = ({onClick, isSubmitted}) => {
+export const Main = () => {
+    const { handleFormVisibility } = useContext(FormContext)
     const [trip, setTrip] = useState({city: '', start: '', end: ''})//global props which retrieves data in citycard and pass it to weekly and daily forecast
     const [dbCities, setDbCities] = useState([])
     const [checkedItem, setCheckedItem] = useState('');
@@ -42,8 +45,8 @@ export const Main = ({onClick, isSubmitted}) => {
                     <div className='searchIcon'><Search className='search'/></div>
                 </div>
                 <div className='cityAndButtonWrapper'>
-                    <CityCard setTrip={setTrip} isSubmitted={isSubmitted} checkedItem={checkedItem} setCheckedItem={setCheckedItem}/>
-                    <button onClick={onClick}>Add trip</button>
+                    <CityCard setTrip={setTrip} checkedItem={checkedItem} setCheckedItem={setCheckedItem}/>
+                    <button onClick={handleFormVisibility}>Add trip</button>
                 </div>
                 <WeeklyForecast trip={trip}/>
                 </main>

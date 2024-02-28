@@ -1,11 +1,11 @@
-import { useState } from 'react'
+import { useContext, useState } from 'react'
 import axios from 'axios';
 import { X } from 'lucide-react'
 import './Form.css'
+import { FormContext} from '../../App'
 
-
-export const Form = ({onClick, handleSubmission}) => {
-    
+export const Form = () => {
+    const { handleSubmission, handleFormVisibility } = useContext(FormContext)
     const [inputData, setInputData] = useState({city: '', startDate: '', endDate: ''})
 
     const formattedData = {
@@ -23,15 +23,15 @@ export const Form = ({onClick, handleSubmission}) => {
         .catch(function (error) {
         console.error('Error:', error);
         });
-        onClick()
-        handleSubmission()
+        handleSubmission();
+        handleFormVisibility();
     }
 
     return <div className='formWrapper'>
         <form id='inputDataForm' onSubmit={handleSubmit}>
             <div className='formLabelWrapper'>
                 <label className='formTitle' htmlFor="inputDataForm">Create trip</label>
-                <button onClick={onClick}><X/></button>
+                <button onClick={handleFormVisibility}><X/></button>
             </div>
             <div className='inputElements'>
                 <div className='formInputWrapper'>
@@ -61,7 +61,7 @@ export const Form = ({onClick, handleSubmission}) => {
                 </div>
             </div>
             <div className='formButtons'>
-                <button onClick={onClick}>Cancel</button>
+                <button onClick={handleFormVisibility}>Cancel</button>
                 <button type='submit'>Save</button>
             </div>
         </form>

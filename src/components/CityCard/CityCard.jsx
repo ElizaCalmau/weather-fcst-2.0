@@ -1,16 +1,13 @@
-import { useEffect, useState } from "react";
+import { useContext, useEffect, useState } from "react";
 import axios from "axios";
 import { formatDate } from "../../utils/formatDate";
 import "./CityCard.css";
+import { FormContext } from "../../App";
 
 const accessKey = "t7hhZ5uulANaG1kjtrYjldaQyenQzp6RmunyhjqRz5w";
 
-export const CityCard = ({
-  checkedItem,
-  setCheckedItem,
-  setTrip,
-  isSubmitted,
-}) => {
+export const CityCard = ({checkedItem, setCheckedItem, setTrip}) => {
+  const { isSubmitted } = useContext(FormContext)
   const [imageUrl, setImageUrl] = useState([]);
   const [dbCities, setDbCities] = useState([]);
   const handleChecked = (city) => {
