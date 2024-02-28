@@ -1,6 +1,6 @@
-import axios from 'axios';
 import { Search } from 'lucide-react';
 import { useState, useEffect, createContext, useContext } from 'react';
+import axios from 'axios';
 import { FormContext } from '../../App';
 import { CityCard } from '../CityCard/CityCard';
 import { WeeklyForecast } from '../WeeklyForecast/WeeklyForecast';

@@ -38,7 +38,6 @@ export const Form = () => {
                     <label htmlFor="cities">City</label>
                     <select name="cities" id="cities" defaultValue="Please seelct a city" required onChange={(e) => setInputData({...inputData, city: e.target.value})}>
                         <option value="Please select a city" disabled>Please seelct a city</option>
-                        <option value="Chicago">Chicago</option>
                         <option value="Fresno">Fresno</option>
                         <option value="Kharkiv">Karkiv</option>
                         <option value="Lviv">Lviv</option>

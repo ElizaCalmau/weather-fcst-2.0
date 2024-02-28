@@ -1,6 +1,6 @@
-import axios from "axios"
 import { useContext, useEffect, useState } from "react"
 import { TripContext } from "../Main/Main"
+import axios from "axios"
 import { formatDateFetch } from "../../utils/formatDateFetch"
 import { getDayOfWeek } from "../../utils/getDayOfWeek"
 import { forecastIcons } from "../../utils/weatherStates"
