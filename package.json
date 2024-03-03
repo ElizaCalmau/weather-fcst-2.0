@@ -5,7 +5,7 @@
   "type": "module",
   "scripts": {
     "dev": "vite",
-    "nodemon": "nodemon ../index.js",
+    "nodemon": "nodemon ./server/index.js",
     "start": "concurrently \" npm run dev \" \"npm run nodemon \"",
     "build": "vite build",
     "lint": "eslint . --ext js,jsx --report-unused-disable-directives --max-warnings 0",
